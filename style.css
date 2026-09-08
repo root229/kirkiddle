@@ -1,0 +1,329 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+
+:root {
+  --bg: #050505;
+  --panel-bg: #0d0d0d;
+  --fg: #ededed;
+  --muted: #7a7a7a;
+  --line: #2b2b2b;
+  --line-active: #ededed;
+  --divider: #1f1f1f;
+  --error: #b5453f;
+
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+/* ==========================================================================
+   Reset & base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+p.lede {
+  margin: 0 0 48px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  font-family: var(--sans);
+}
+
+/* ==========================================================================
+   Gate (index page): headline + word input that redirects
+   ========================================================================== */
+
+.stage {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.stage-inner {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+#gate-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+#gate-form input[type="text"] {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 20px;
+  text-align: center;
+  padding: 10px 4px 14px;
+  outline: none;
+  transition: border-color 0.25s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+#gate-form input[type="text"]::placeholder {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+#gate-form input[type="text"]:focus {
+  border-bottom-color: var(--line-active);
+}
+
+#gate-form input[type="text"].shake {
+  border-bottom-color: var(--error);
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.hint {
+  min-height: 18px;
+  font-size: 13px;
+  color: var(--error);
+  font-family: var(--sans);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.hint.visible {
+  opacity: 1;
+}
+
+#gate-form button[type="submit"] {
+  display: none;
+}
+
+/* ==========================================================================
+   Panels (subpages): one section per unit of content, stacked
+   ========================================================================== */
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+.page-header {
+  margin-bottom: 56px;
+}
+
+.panel {
+  padding: 40px 0;
+  border-top: 1px solid var(--divider);
+}
+
+.panel:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.panel-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+/* Text panel: prose only, no chrome */
+
+.panel--text p {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+/* Image panel: the artwork plus a short caption */
+
+.panel--image figure {
+  margin: 0;
+}
+
+.panel--image img,
+.panel--image svg {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--divider);
+}
+
+.panel--image figcaption {
+  margin-top: 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Audio panel: a round transport button + small bar visualizer */
+
+.panel--audio .audio-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.audio-toggle {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.audio-toggle:hover,
+.audio-toggle:focus-visible {
+  border-color: var(--line-active);
+}
+
+.audio-toggle .icon-play,
+.audio-toggle .icon-pause {
+  width: 16px;
+  height: 16px;
+}
+
+.audio-toggle .icon-pause {
+  display: none;
+}
+
+.audio-toggle.is-playing .icon-play {
+  display: none;
+}
+
+.audio-toggle.is-playing .icon-pause {
+  display: block;
+}
+
+.audio-meta {
+  font-family: var(--sans);
+}
+
+.audio-meta .audio-label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.audio-meta .audio-sub {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.audio-visual {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+  margin-left: auto;
+}
+
+.audio-visual span {
+  width: 3px;
+  height: 100%;
+  background: var(--line);
+  transform-origin: bottom;
+  animation: none;
+}
+
+.audio-visual.is-playing span {
+  background: var(--fg);
+  animation: bar 0.9s ease-in-out infinite;
+}
+
+.audio-visual span:nth-child(1) { animation-delay: 0s; }
+.audio-visual span:nth-child(2) { animation-delay: 0.15s; }
+.audio-visual span:nth-child(3) { animation-delay: 0.3s; }
+.audio-visual span:nth-child(4) { animation-delay: 0.1s; }
+
+@keyframes bar {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-visual.is-playing span,
+  #gate-form input[type="text"].shake {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   Small screens
+   ========================================================================== */
+
+@media (max-width: 380px) {
+  p.lede {
+    margin-bottom: 36px;
+  }
+
+  .page {
+    padding: 48px 20px 72px;
+  }
+
+  .panel--audio .audio-row {
+    flex-wrap: wrap;
+    row-gap: 14px;
+  }
+
+  .audio-visual {
+    margin-left: 76px;
+  }
+}

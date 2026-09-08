@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Enter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="stage">
+    <div class="stage-inner">
+      <h1>What are you looking for</h1>
+      <p class="lede">Type a word, phrase, or number below. If it's the right one, you'll be taken somewhere.</p>
+
+      <form id="gate-form" autocomplete="off">
+        <input
+          type="text"
+          id="gate-input"
+          name="gate-input"
+          placeholder="Type here"
+          inputmode="text"
+          autocapitalize="off"
+          autocorrect="off"
+          spellcheck="false"
+          enterkeyhint="go"
+          required
+        >
+        <button type="submit">Go</button>
+        <div class="hint" id="gate-hint">Nothing here yet &mdash; try something else</div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
