@@ -1,3 +1,3 @@
 # kirkiddle
-Riddle for the kirkiversary
+Riddle for the twinnamon
 https://gc.de/gc/caesar/
