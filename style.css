@@ -66,6 +66,15 @@ p.lede {
   color: var(--muted);
   font-family: var(--sans);
 }
+li.green {
+  color: #80f080;
+}
+li.yellow {
+  color: #f0f080;
+}
+li.red {
+  color: #f08080;
+}
 
 /* ==========================================================================
    Gate (index page): headline + word input that redirects
@@ -156,6 +165,26 @@ p.lede {
   max-width: 640px;
   margin: 0 auto;
   padding: 64px 24px 96px;
+}
+
+.back-button {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.back-button:hover,
+.back-button:focus-visible {
+  border-color: var(--line-active);
+  color: var(--fg);
 }
 
 .page-header {
