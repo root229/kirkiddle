@@ -75,6 +75,9 @@ li.yellow {
 li.red {
   color: #f08080;
 }
+a.link {
+  color:#808080;
+}
 
 /* ==========================================================================
    Gate (index page): headline + word input that redirects
